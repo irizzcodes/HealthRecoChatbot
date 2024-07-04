@@ -18,3 +18,31 @@ stories:
   - action: action_order_food
   - intent: inform_food
   - action: action_confirm_order
+
+- story: ask information
+  steps:
+  - intent: ask_information
+  - action: confirm_information_diseases
+  - intent: inform_disease
+  - action: action_information_diseases
+
+- story: ask medicine
+  steps:
+  - intent: ask_medicine
+  - action: confirm_medicine_diseases
+  - intent: inform_disease
+  - action: action_medicine_diseases
+
+- story: ask recommendation
+  steps:
+  - intent: ask_recommendation
+  - action: confirm_recommendation_diseases
+  - intent: inform_disease
+  - action: action_recommendation_diseases
+
+- story: ask symptoms
+  steps:
+  - intent: ask_symptom
+  - action: confirm_symptom_diseases
+  - intent: inform_disease
+  - action: action_symptom_diseases

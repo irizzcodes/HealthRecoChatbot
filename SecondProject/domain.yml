@@ -7,6 +7,11 @@ intents:
   - order_pizza
   - order_food
   - inform_food
+  - ask_information
+  - ask_recommendation
+  - ask_medicine
+  - ask_symptom
+  - inform_disease
 
 entities:
   - food
@@ -16,6 +21,14 @@ actions:
   - action_extract_food_entity
   - action_order_food
   - action_confirm_order
+  - confirm_information_diseases
+  - action_information_diseases
+  - confirm_recommendation_diseases
+  - action_recommendation_diseases
+  - confirm_medicine_diseases
+  - action_medicine_diseases
+  - confirm_symptom_diseases
+  - action_symptom_diseases
 
 responses:
   utter_greet:
