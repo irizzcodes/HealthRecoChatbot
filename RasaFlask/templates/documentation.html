@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+</head>
+<body>
+    <div class="container1">
+        <nav id="navbar">
+            <header> Health Chatbot Documentation</header>
+            <ul>
+                <li>
+                    <a class="nav-link" href="#Getting_Started_with_Health_Chatbot">Getting Started with Health Chatbot</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#Get_Information_about_Diseases">Get Information about Diseases</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#Get_Recommendation_about_Diseases">Get Recommendation about Diseases</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#Get_Symptoms_about_Diseases">Get Symptoms about Diseases</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#Get_Medicine_about_Diseases">Get Medicine about Diseases</a>
+                </li>
+                <!--<li>
+                    <a class="nav-link" href="#List_Diseases">List of Diseases' Information Available</a>
+                </li>-->
+            </ul>
+        </nav>
+        <main id="main-doc">
+            <div class="scroll-main-doc">
+                <section id="Getting_Started_with_Health_Chatbot">
+                    <header>Getting Started with Health Chatbot</header>
+                    <p>Health Recommendation Chatbot is a bot that you can communicate with to help with your queries. <br>
+                    Start chatting with the health recommendation chatbot by clicking the button located on the bottom-right of the website</p>
+                    <p>Try sending the following:</p>
+                    <ul>
+                        <li> Good morning</li>
+                        <li> Good evening</li>
+                        <li> Hello</li>
+                        <li> Hey </li>
+                        <li> Hi </li>
+                    </ul>
+
+                </section>
+
+                <section id="Get_Information_about_Diseases">
+                <header>Get Information about Diseases</header>
+                <p>The chatbot is designed for health information and can provide information and answers to medical queries regarding the diseases.</p>
+                <p>To get an information about diseases, you can use these query:</p>
+                    <ul>
+                        <li> I want to get an information</li>
+                        <li> Can I have an information about some diseases</li>
+                        <li> Need info</li>
+                        <li> Need information </li>
+                    </ul>
+                </section>
+
+                <section id="Get_Recommendation_about_Diseases">
+                <header>Get Recommendation about Diseases</header>
+                <p>You can get a recommendation from the chatbot as it can offer personalized health recommendation that suggests lifestyle changes, dietary adjustments, exercise routines, and preventive measures.</p>
+                <p>To get a recommendation about diseases, you can use these query:</p>
+                    <ul>
+                        <li> I want to get a recommendation</li>
+                        <li> Can I have a recommendation about some diseases</li>
+                        <li> Need recommendation</li>
+                        <li> Need reco </li>
+                    </ul>
+
+                </section>
+                <section id="Get_Symptoms_about_Diseases">
+                <header>Get Symptoms about Diseases</header>
+                <p>The chatbot can assist by identifying symptoms, offering information about potential medical conditions on certain diseases.</p>
+                <p>To know the symptoms of the diseases, you can use these query:</p>
+                    <ul>
+                        <li> I want to get an information about symptom on some diseases</li>
+                        <li> Can I have an information about some diseases</li>
+                        <li> What symptom for some diseases</li>
+                        <li> Need symptom information</li>
+                        <li> Need symptoms info </li>
+                    </ul>
+                </section>
+
+                <section id="Get_Medicine_about_Diseases">
+                <header>Get Medicine about Diseases</header>
+                <p>The chatbot offers insights on medication that might includes recommended dosage instructions as per general dosage and its potential side effects, interaction with other drugs, and general uses guidelines.</p>
+                <p>To know the medicine of some diseases, you can use these query:</p>
+                    <ul>
+                        <li> I want to know a medicine for some disease</li>
+                        <li> Can I have a medicine about some diseases</li>
+                        <li> Need medicine info</li>
+                        <li> Need medicine information </li>
+                    </ul>
+                </section>
+                <!--
+                <section id="List_Diseases">
+                <header>List of Diseases with Information Available</header>
+                <p></p>
+                </section>
+                -->
+
+            </div>
+
+        </main>
+
+
+
+
+
+
+        <!-- btn -->
+        <button id="chat-widget-button" type="button" class="btn btn-primary rounded-circle position-fixed chat-sign-button" style="bottom: 20px; right 20px;"><img src="../static/bot.png" width="20"></button>
+        <!-- chatbox -->
+        <div id="chat-widget" class="card position-fixed shadow d-none" style="bottom: 100px; right: 20px; width:300px;">
+            <div class="card-header bg-primary text-white">
+                Chatbot
+                <button id="chat-widget-close-button" type="button" class="close float-end" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+
+            <div class="card-body" id="chat-widget-messages">
+                <!-- chat messages will appear here -->
+            </div>
+
+            <div class="card-footer">
+                <input type="text" class="form-control" id="chat-widget-input" placeholder="Type your query...">
+            </div>
+        </div>
+    </div>
+<footer>
+    <p>Documentation made for Healthcare Recommendation Chatbot as a project for Software Engineer</p>
+</footer>
+<script>
+    $(document).ready(function() {
+        $("#chat-widget-button").on("click", function() {
+            $("#chat-widget").toggleClass("d-none")
+
+        });
+
+        $("#chat-widget-close-button").on("click", function() {
+            $("#chat-widget").addClass("d-none")
+
+        });
+
+        $("#chat-widget-input").keyup(function(event) {
+            if(event.which === 13) {
+                let userMessage = $("#chat-widget-input").val();
+                $("#chat-widget-input").val("")
+
+                // append messages to chat box
+                $("#chat-widget-messages").append("<div><strong>You:</strong> " + userMessage + "</div>");
+
+                // send user message to server and get bot response
+                $.ajax({
+                    type: "POST",
+                    url: "/webhook",
+                    contentType: "application/json",
+                    data: JSON.stringify({ message: userMessage }),
+                    success: function(data) {
+                        let botResponse = data.response;
+
+                        // append bot response to chat box
+                        $("#chat-widget-messages").append("<div><strong>Bot:</strong> " + botResponse + "</div>");
+
+                    },
+
+                    error: function() {
+                        // Handle error
+                    }
+                });
+
+            }
+        });
+
+    });
+</script>
+<!--<script src="{{ url_for('static', filename='chat-widget.js') }}"></script>-->
+</body>
+</html>

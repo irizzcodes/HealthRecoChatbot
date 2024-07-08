@@ -1,0 +1,153 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+#main-doc::-webkit-scrollbar {
+    width: 10px;
+}
+
+#main-doc::-webkit-scrollbar-thumb {
+    background: rgb(10,10,20);
+    border-radius: 20px;
+}
+
+#main-doc::-webkit-scrollbar-track {
+    background: rgb(40,40,50);
+
+}
+
+#main-doc::-webkit-scrollbar-thumb:hover {
+}
+
+
+
+
+
+body {
+    background-color: rgb(33,33,45);
+}
+
+#navbar {
+    background-color: rgb(10,10,20);
+    overflow-y: auto;
+    overflow-x: none;
+    border-bottom:1px solid;
+    width: 50%;
+    position: relative;
+}
+
+#navbar li {
+    background-color: rgb(10,10,20);
+    border-top:1px solid;
+    list-style: none;
+}
+
+#navbar a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 18px;
+    transition: text-indent 0.2s ease-in-out;
+}
+
+#navbar a:hover {
+    font-weight: 500;
+    text-indent: 5px;
+}
+
+section li {
+    margin-left: 15%;
+    margin-right: 5%;
+    text-align: justify;
+    color: white;
+}
+
+section p {
+    margin-left: 10%;
+    margin-right: 5%;
+    text-align: justify;
+    color: white;
+}
+
+ol {
+    margin-left: 30px;
+}
+
+#main-doc {
+    flex-grow: 1;
+    margin: 0 auto;
+    overflow-y:auto;
+}
+
+header {
+    color: #F6F6FF;
+    margin: 10px;
+    text-align: center;
+    font-size: 1.7em;
+    font-weight: 500;
+}
+
+.image {
+    width: 100%;
+}
+
+@media only screen and (min-width: 815px) {
+    .container1 {
+        display:flex;
+        flex-direction: row;
+        min-height: 120vh;
+        max-height: 120vh;
+    }
+
+}
+
+footer {
+    border-top: 1px solid black;
+    background-color: rgb(20,20,30);
+    padding: 50px;
+    text-align: center;
+    color: white;
+}
+
+.chat-sign-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 50px;
+    height: 50px;
+    font-size 24px;
+    border: none;
+    border-radius: 50%;
+    padding: 10px 15px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.chat-sign-button:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.card-body {
+    overflow-y: auto;
+    max-height: 300px;
+}

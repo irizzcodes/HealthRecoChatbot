@@ -12,13 +12,6 @@ stories:
   - intent: thank
   - action: utter_thank
 
-- story: order my pizza
-  steps:
-  - intent: order_food
-  - action: action_order_food
-  - intent: inform_food
-  - action: action_confirm_order
-
 - story: ask information
   steps:
   - intent: ask_information

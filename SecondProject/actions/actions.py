@@ -79,7 +79,6 @@ class ProvideInformationDiseases(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         try:
-            # Load the CSV file containing disease information
             df = pd.read_csv('./dataset/healthdata.csv')
             print("CSV file loaded successfully")
         except FileNotFoundError:
@@ -92,11 +91,9 @@ class ProvideInformationDiseases(Action):
             dispatcher.utter_message(text="The dataset file is corrupted.")
             return []
 
-            # Get the latest entity value for 'disease'
         disease_entity = next(tracker.get_latest_entity_values('disease'), None)
         print(f"Disease entity: {disease_entity}")
 
-        # Check if the disease entity exists and find the corresponding information
         if disease_entity:
             # Assuming the CSV has columns named 'disease' and 'information'
             information_row = df[df['disease'].str.lower() == disease_entity.lower()]
@@ -180,19 +177,14 @@ class ProvideMedicineDiseases(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        # Load the CSV file containing disease recommendations
         df = pd.read_csv('./dataset/healthdata.csv')
 
-        # Get the latest entity value for 'disease'
         disease_entity = next(tracker.get_latest_entity_values('disease'), None)
 
-        # Check if the disease entity exists and find the corresponding recommendation
         if disease_entity:
-            # Assuming the CSV has columns named 'disease' and 'recommendation'
             medicine_row = df[df['disease'] == disease_entity]
 
             if not medicine_row.empty:
-                # Select the first matching recommendation (assuming each disease has only one recommendation)
                 medicine_text = medicine_row.iloc[0]['medicine']
                 dispatcher.utter_message(text=medicine_text)
             else:
@@ -224,20 +216,16 @@ class ProvideSymptomsDiseases(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        # Load the CSV file containing disease recommendations
         df = pd.read_csv('./dataset/healthdata.csv')
 
-        # Get the latest entity value for 'disease'
         disease_entity = next(tracker.get_latest_entity_values('disease'), None)
 
         # Check if the disease entity exists and find the corresponding recommendation
         if disease_entity:
-            # Assuming the CSV has columns named 'disease' and 'recommendation'
             symptom_row = df[df['disease'] == disease_entity]
 
             if not symptom_row.empty:
-                # Select the first matching recommendation (assuming each disease has only one recommendation)
-                symptom_text = symptom_row.iloc[0]['symptom']
+                symptom_text = symptom_row.iloc[0]['symptoms']
                 dispatcher.utter_message(text=symptom_text)
             else:
                 dispatcher.utter_message(text="I couldn't find a specific symptom for that disease.")
